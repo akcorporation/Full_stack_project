@@ -10,11 +10,11 @@ table 2. category_master ---> cat_id, cat_name, parent_cat_id -----Abhishek
 
 table 3. offer_master  ---> offer_id, cat_id, offer_s_date, offer_e_date -----Tarun
 
-table 4. cart_master ====> cart_id, user_id, prd_id, prd_qantity  ------ Amit
+table 4. cart_master ====> cart_id, user_id, prd_id, prd_quantity  ------ Amit
 
 table 5. billing_master -----> bill_id, user_id, amount, products{prd1,prd2}, bill_date  -----Tarun
 
-table 6. user_table ----> user_id, user_name, user_mobile, user_address, user_email, user_type, user_pass ----Amit
+table 6. user_master ----> user_id, user_name, user_mobile, user_address, user_email, user_type, user_pass ----Amit
 
 
 ********Add modify_by, modify_time in every table********
