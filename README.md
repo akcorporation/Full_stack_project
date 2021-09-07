@@ -6,7 +6,7 @@ Hi This is new Project Welcome .... Amit
 
 table 1. Product_master---> Prd_Id, Prd_name, Prd_desc, prd_rate, prd_aval, prd_Cat_id, prd_ed, prd_img , prd_img_extension ------ Abhishek
 
-table 2. category_master ---> cat_id, cat_name, parent_cat_id -----Abhishek
+table 2. category_master ---> cat_id, cat_name,offer_deatil, parent_cat_id -----Abhishek
 
 table 3. offer_master  ---> offer_id, cat_id, offer_s_date, offer_e_date -----Tarun
 
