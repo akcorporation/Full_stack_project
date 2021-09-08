@@ -32,18 +32,13 @@ public class OfferService {
         }
     }
 
-    public String getAllOffer(){
+    public List<Offer> getAllOffer(){
 
-        String result = "";
         List<Offer> offerDetails = offerRepository.getAllOffers();
         if (offerDetails.size()==0) {
-            return "No Data Found ......";
+            return null;
         } else {
-            for(Offer offerDetail : offerDetails) {
-                result = result + "Id :"+offerDetail.getOfferId() +" on Category :"+offerDetail.getCatId()+" Offer Detail :"+offerDetail.getofferVal()+" % Discount"+"  Offer Start Date :" 
-                + offerDetail.getOfferSDate() +" Offer End Date :"+ offerDetail.getOfferEDate() +"\n";
-            }
-            return result;
+           return offerDetails;
         }
     }
 
