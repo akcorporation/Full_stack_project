@@ -37,7 +37,12 @@ public class OfferController{
     @RequestMapping(value = "/getOffers",method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Offer>> getOffers() {
         List<Offer> response = offerService.getAllOffer();
-        return new ResponseEntity<>(response , HttpStatus.OK);
+        if(response == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }else{
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        }
+        
     }
 
     @PostMapping("/updateOffer")

@@ -35,11 +35,7 @@ public class OfferService {
     public List<Offer> getAllOffer(){
 
         List<Offer> offerDetails = offerRepository.getAllOffers();
-        if (offerDetails.size()==0) {
-            return null;
-        } else {
            return offerDetails;
-        }
     }
 
     public String updateOfferDetails(Long Id,Long catId,Date offerSDate,Date offerEDate, int offerVal) {

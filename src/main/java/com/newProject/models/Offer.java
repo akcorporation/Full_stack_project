@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -18,7 +16,6 @@ import javax.persistence.TemporalType;
 public class Offer{
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "offer_id")
     private long offerId;
     @Column(name = "cat_id")
@@ -72,5 +69,7 @@ public class Offer{
     public void setofferVal(int offer_detail) {
         this.offerVal = offer_detail;
     }
+ 
+
 
 }
