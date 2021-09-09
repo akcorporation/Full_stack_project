@@ -12,12 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -33,7 +33,6 @@ public class OfferController{
         return new ResponseEntity<>(response , HttpStatus.OK);
     }
     
-    @ResponseBody
     @RequestMapping(value = "/getOffers",method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Offer>> getOffers() {
         List<Offer> response = offerService.getAllOffer();
@@ -53,8 +52,20 @@ public class OfferController{
     }
 
     @DeleteMapping("/deleteOffer/{Id}")
-        public ResponseEntity<String> deleteOffer(@PathVariable long Id) {
-            String respose = offerService.deleteOfferById(Id);
-            return new ResponseEntity<>(respose , HttpStatus.OK);
+    public ResponseEntity<String> deleteOffer(@PathVariable long Id) {
+        String respose = offerService.deleteOfferById(Id);
+        return new ResponseEntity<>(respose , HttpStatus.OK);
+    }
+
+    @GetMapping("/getOfferByCat/{catId}")
+    public ResponseEntity<Offer> getOfferByCatId(@PathVariable Long catId){
+        Offer response = offerService.validateAndGetOffer(catId);
+        if(response == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }else{
+            return new ResponseEntity<>(response,HttpStatus.OK);
         }
+        
+    }
+
 }

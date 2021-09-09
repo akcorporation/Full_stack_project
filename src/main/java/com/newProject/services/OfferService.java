@@ -33,9 +33,8 @@ public class OfferService {
     }
 
     public List<Offer> getAllOffer(){
-
         List<Offer> offerDetails = offerRepository.getAllOffers();
-           return offerDetails;
+        return offerDetails;
     }
 
     public String updateOfferDetails(Long Id,Long catId,Date offerSDate,Date offerEDate, int offerVal) {
@@ -71,4 +70,9 @@ public class OfferService {
         
     }
     
+    public Offer validateAndGetOffer(Long catId){
+        // Code to check Category Repository After getting from Abhishek
+        Offer result = offerRepository.getOfferDetailsByCatid(catId);
+        return result;
+    }
 }

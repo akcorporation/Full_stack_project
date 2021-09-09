@@ -24,4 +24,7 @@ public interface OfferRepository extends JpaRepository<Offer , Long> {
     nativeQuery = true)
     Optional<Offer> check(Long Id);
     
+    @Query(value = "SELECT * FROM OFFER_MASTER o where o.cat_id = :catId", 
+    nativeQuery = true)
+    Offer getOfferDetailsByCatid(Long catId);
 }
