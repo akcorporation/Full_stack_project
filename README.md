@@ -8,7 +8,7 @@ table 1. Product_master---> Prd_Id, Prd_name, Prd_desc, prd_rate, prd_aval, prd_
 
 table 2. category_master ---> cat_id, cat_name, parent_cat_id -----Abhishek
 
-table 3. offer_master  ---> offer_id, cat_id, offer_s_date, offer_e_date -----Tarun
+table 3. offer_master  ---> offer_id, cat_id ,offer_deatil, offer_s_date, offer_e_date -----Tarun
 
 table 4. cart_master ====> cart_id, user_id, prd_id, prd_quantity  ------ Amit
 
