@@ -65,5 +65,16 @@ public class UserService {
 		return userRecords;
 		
 	}
+
+	public String deleteUser(int id) {
+		String response;
+		try {
+		    repo.deleteById(id);
+		    response= "User Deleted Successfully";
+		}catch (Exception e) {
+			response= "User Deleted Successfully";
+		}
+		return response;
+	}
 	
 }

@@ -18,4 +18,6 @@ public interface UserRepository extends JpaRepository<User,Integer > {
 	@Query(value = "SELECT * FROM USER_MASTER o where o.user_email = :email", 
 		    nativeQuery = true)
 	User getUserByEmail(String email);
+	
+	void deleteById(int id);
 }
