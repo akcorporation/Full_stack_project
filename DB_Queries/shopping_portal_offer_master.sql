@@ -27,8 +27,9 @@ CREATE TABLE `offer_master` (
   `cat_id` int DEFAULT NULL,
   `offer_s_date` text,
   `offer_e_date` text,
+  `offer_detail` int DEFAULT NULL,
   PRIMARY KEY (`offer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +38,7 @@ CREATE TABLE `offer_master` (
 
 LOCK TABLES `offer_master` WRITE;
 /*!40000 ALTER TABLE `offer_master` DISABLE KEYS */;
+
 /*!40000 ALTER TABLE `offer_master` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,5 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
--- Dump completed on 2021-09-05 17:26:26
+-- Dump completed on 2021-09-10 20:19:18

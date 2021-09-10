@@ -1,7 +1,6 @@
 package com.newProject.models;
 
 import java.util.Date;
-import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,11 +20,14 @@ public class Bill {
     private Long userId;
     @Column(name = "total_amount")
     private float billAmt;
-    // @Column(name = "products")
-    // private Map<String, Integer> billProduct;    
+    @Column(name = "products")
+    private String billProduct;    
     @Temporal(TemporalType.DATE)
     @Column(name = "bill_date")
     private Date billDate;
+    @Column(name = "is_cancelled")
+    private boolean isCancelled;
+
 
     public Long getBillId() {
         return this.billId;
@@ -65,6 +67,14 @@ public class Bill {
 
     public void setBillDate(Date billDate) {
         this.billDate = billDate;
+    }
+
+    public boolean isIsCancelled() {
+        return this.isCancelled;
+    }
+
+    public void setIsCancelled(boolean isCancelled) {
+        this.isCancelled = isCancelled;
     }
 
 }

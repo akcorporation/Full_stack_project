@@ -11,7 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
-@Entity
+@Entity()
 @Table(name = "offer_master")
 public class Offer{
 

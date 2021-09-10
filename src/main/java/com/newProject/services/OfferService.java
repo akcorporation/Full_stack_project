@@ -12,6 +12,7 @@ import com.newProject.repositories.OfferRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OfferService {
@@ -71,6 +72,7 @@ public class OfferService {
         }    
     }
 
+    @Transactional
     public String deleteOfferById(Long Id){
         Optional<Offer> optional = offerRepository.check(Id);
         if(optional.isPresent()){
@@ -85,6 +87,7 @@ public class OfferService {
     
     public OfferDto validateAndGetOfferByCatId(Long catId){
         // Code to check Category Repository After getting from Abhishek
+        //String catName = categoryRepo.getCatNameById(Long catId);
         Offer offerDetail = offerRepository.getOfferDetailsByCatid(catId);
         OfferDto offerData = new OfferDto();
         if(offerDetail == null){
