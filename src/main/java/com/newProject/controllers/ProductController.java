@@ -1,7 +1,6 @@
 package com.newProject.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,12 +33,6 @@ public class ProductController {
 	 * @param prdCatId
 	 * @return saves the product in DB
 	 */
-	// @PostMapping("/")
-	// private void demo(@RequestParam int Name) {
-	// 	System.out.println("Hello");
-	// 	System.out.println(Name);
-
-	// }
 
 	@PostMapping("/saveProduct")
 	public ResponseEntity<String> saveProduct(@RequestParam String prdName,

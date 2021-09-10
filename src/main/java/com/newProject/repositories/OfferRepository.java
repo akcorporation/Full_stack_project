@@ -20,6 +20,7 @@ public interface OfferRepository extends JpaRepository<Offer , Long> {
 
     public static final String SELECT_FROM_OFFER_MASTER_BY_CAT_ID = "SELECT * FROM OFFER_MASTER o where o.cat_id = :catId";
 
+    @SuppressWarnings("unchecked")
     Offer save(Offer offerDeatil);
 
     @Query(value = SELECT_FROM_OFFER_MASTER, 
