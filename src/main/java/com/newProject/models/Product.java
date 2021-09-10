@@ -1,0 +1,71 @@
+package com.newProject.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "product_master")
+public class Product {
+@Id
+@Column(name = "prd_id")
+private int prdId;
+@Column(name = "prd_name")
+private String prdName;
+@Column(name = "prd_desc")
+private String prdDesc;
+@Column(name = "prd_rate")
+private int prdRate;
+@Column(name = "prd_avail")
+private int prdAvail;
+@Column(name = "prd_cat_id")
+private int prdCatId;
+@Column(name = "prd_ed")
+private int prdEd;
+
+public int getPrdId() {
+	return prdId;
+}
+public void setPrdId(int prdId) {
+	this.prdId = prdId;
+}
+public String getPrdName() {
+	return prdName;
+}
+public void setPrdName(String prdName) {
+	this.prdName = prdName;
+}
+public String getPrdDesc() {
+	return prdDesc;
+}
+public void setPrdDesc(String prdDesc) {
+	this.prdDesc = prdDesc;
+}
+public int getPrdRate() {
+	return prdRate;
+}
+public void setPrdRate(int prdRate) {
+	this.prdRate = prdRate;
+}
+public int getPrdAvail() {
+	return prdAvail;
+}
+public void setPrdAvail(int prdAvail) {
+	this.prdAvail = prdAvail;
+}
+public int getPrdCatId() {
+	return prdCatId;
+}
+public void setPrdCatId(int prdCatId) {
+	this.prdCatId = prdCatId;
+}
+public int getPrdEd() {
+	return prdEd;
+}
+public void setPrdEd(int prdEd) {
+	this.prdEd = prdEd;
+}
+
+
+}
