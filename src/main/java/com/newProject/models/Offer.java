@@ -69,6 +69,10 @@ public class Offer{
     public void setofferVal(int offer_detail) {
         this.offerVal = offer_detail;
     }
+
+    public String getCatName() {
+        return "Electronics";
+    }
  
 
 

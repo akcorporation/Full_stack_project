@@ -1,10 +1,12 @@
 package com.newProject.services;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.newProject.Dto.OfferDto;
 import com.newProject.models.Offer;
 import com.newProject.repositories.OfferRepository;
 
@@ -32,9 +34,20 @@ public class OfferService {
         }
     }
 
-    public List<Offer> getAllOffer(){
+    public List<OfferDto> getAllOffer(){
         List<Offer> offerDetails = offerRepository.getAllOffers();
-        return offerDetails;
+        List<OfferDto> offerDatas = new ArrayList<>();
+        for (Offer offerDetail : offerDetails){
+            OfferDto offerData = new OfferDto();
+            offerData.setOfferId(offerDetail.getOfferId());
+            offerData.setCatId(offerDetail.getCatId());
+            offerData.setCatName(offerDetail.getCatName());
+            offerData.setOfferEDate(offerDetail.getOfferEDate());
+            offerData.setOfferSDate(offerDetail.getOfferSDate());
+            offerData.setOfferVal(offerDetail.getofferVal());
+            offerDatas.add(offerData);
+        }
+        return offerDatas;
     }
 
     public String updateOfferDetails(Long Id,Long catId,Date offerSDate,Date offerEDate, int offerVal) {
@@ -70,9 +83,21 @@ public class OfferService {
         
     }
     
-    public Offer validateAndGetOffer(Long catId){
+    public OfferDto validateAndGetOfferByCatId(Long catId){
         // Code to check Category Repository After getting from Abhishek
-        Offer result = offerRepository.getOfferDetailsByCatid(catId);
-        return result;
+        Offer offerDetail = offerRepository.getOfferDetailsByCatid(catId);
+        OfferDto offerData = new OfferDto();
+        if(offerDetail == null){
+            offerData = null;
+        }
+        else{
+            offerData.setOfferId(offerDetail.getOfferId());
+            offerData.setCatId(offerDetail.getCatId());
+            offerData.setCatName(offerDetail.getCatName());
+            offerData.setOfferEDate(offerDetail.getOfferEDate());
+            offerData.setOfferSDate(offerDetail.getOfferSDate());
+            offerData.setOfferVal(offerDetail.getofferVal());
+        }   
+        return offerData;
     }
 }

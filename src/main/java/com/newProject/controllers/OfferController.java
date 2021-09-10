@@ -4,7 +4,8 @@ package com.newProject.controllers;
 
 import java.util.Date;
 import java.util.List;
-import com.newProject.models.Offer;
+
+import com.newProject.Dto.OfferDto;
 import com.newProject.services.OfferService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class OfferController{
     }
     
     @RequestMapping(value = "/getOffers",method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Offer>> getOffers() {
-        List<Offer> response = offerService.getAllOffer();
+    public ResponseEntity<List<OfferDto>> getOffers() {
+        List<OfferDto> response = offerService.getAllOffer();
         if(response == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }else{
@@ -58,8 +59,8 @@ public class OfferController{
     }
 
     @GetMapping("/getOfferByCat/{catId}")
-    public ResponseEntity<Offer> getOfferByCatId(@PathVariable Long catId){
-        Offer response = offerService.validateAndGetOffer(catId);
+    public ResponseEntity<OfferDto> getOfferByCatId(@PathVariable Long catId){
+        OfferDto response = offerService.validateAndGetOfferByCatId(catId);
         if(response == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }else{
