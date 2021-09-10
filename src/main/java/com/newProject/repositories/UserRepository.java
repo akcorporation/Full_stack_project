@@ -9,13 +9,12 @@ import com.newProject.models.User;
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer > {
 	
+	@SuppressWarnings("unchecked")
 	User save(User user);
 	
-	@Query(value = "SELECT * FROM USER_MASTER o where o.user_id = :id", 
-		    nativeQuery = true)
+	@Query(value = "SELECT * FROM USER_MASTER o where o.user_id = :id" , nativeQuery = true)
 	User getUserById(Integer id);
 	
-	@Query(value = "SELECT * FROM USER_MASTER o where o.user_email = :email", 
-		    nativeQuery = true)
+	@Query(value = "SELECT * FROM USER_MASTER o where o.user_email = :email" , nativeQuery = true)
 	User getUserByEmail(String email);
 }

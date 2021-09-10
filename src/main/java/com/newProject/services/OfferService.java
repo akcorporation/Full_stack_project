@@ -12,6 +12,7 @@ import com.newProject.repositories.OfferRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OfferService {
@@ -71,6 +72,7 @@ public class OfferService {
         }    
     }
 
+    @Transactional
     public String deleteOfferById(Long Id){
         Optional<Offer> optional = offerRepository.check(Id);
         if(optional.isPresent()){
