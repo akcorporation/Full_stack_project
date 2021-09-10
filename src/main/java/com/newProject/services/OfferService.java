@@ -85,6 +85,7 @@ public class OfferService {
     
     public OfferDto validateAndGetOfferByCatId(Long catId){
         // Code to check Category Repository After getting from Abhishek
+        //String catName = categoryRepo.getCatNameById(Long catId);
         Offer offerDetail = offerRepository.getOfferDetailsByCatid(catId);
         OfferDto offerData = new OfferDto();
         if(offerDetail == null){

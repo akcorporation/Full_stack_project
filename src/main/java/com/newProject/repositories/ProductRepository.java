@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.newProject.models.Product;
@@ -25,8 +26,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 		    nativeQuery = true)
 	Optional<Product> check(int prdId);
 
-	@Query(value="DELETE from PRODUCT_MASTER p where p.prd_id= :prdId",
-		    nativeQuery = true)
-	void deleteProductById(int prdId);
+	// @Query(value="DELETE FROM PRODUCT_MASTER p WHERE p.prd_id = :prdId")
+	// void deleteProductById(@Param("prdId") int prdId);
+
+	void deleteById(int prdId);
 
 }
