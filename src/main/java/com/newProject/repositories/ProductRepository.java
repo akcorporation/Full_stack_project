@@ -21,12 +21,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Query(value = "SELECT * FROM PRODUCT_MASTER", nativeQuery = true)
 	List<Product> getAllProducts();
 	
-	Optional<Product> findById(long prdId);
+	Optional<Product> findById(Long prdId);
 
 	@Query(value = "SELECT * FROM PRODUCT_MASTER p where p.prd_id= :prdId", 
 		    nativeQuery = true)
-	Optional<Product> check(long prdId);
+	Optional<Product> check(Long prdId);
 
-	void deleteById(long prdId);
+	void deleteById(Long prdId);
 
 }

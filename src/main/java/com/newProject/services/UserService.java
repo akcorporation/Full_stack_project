@@ -2,6 +2,7 @@ package com.newProject.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.newProject.models.User;
 import com.newProject.repositories.UserRepository;
@@ -62,6 +63,17 @@ public class UserService {
 		User userRecords = userRepository.getUserByEmail(email);
 		return userRecords;
 		
+	}
+	@Transactional
+	public String deleteUser(int id) {
+		String response;
+		try {
+			userRepository.deleteById(id);
+		    response= "User Deleted Successfully";
+		}catch (Exception e) {
+			response= "User Deleted Successfully";
+		}
+		return response;
 	}
 	
 }

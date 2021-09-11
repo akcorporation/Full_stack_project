@@ -87,13 +87,14 @@ public class OfferService {
     
     public OfferDto validateAndGetOfferByCatId(Long catId){
         // Code to check Category Repository After getting from Abhishek
-        //String catName = categoryRepo.getCatNameById(Long catId);
-        Offer offerDetail = offerRepository.getOfferDetailsByCatid(catId);
+        Optional<Offer> optional = offerRepository.getOfferDetailsByCatid(catId);
+        Offer offerDetail = new Offer();
         OfferDto offerData = new OfferDto();
-        if(offerDetail == null){
+        if(optional.isEmpty()){
             offerData = null;
         }
         else{
+            offerDetail = optional.get();
             offerData.setOfferId(offerDetail.getOfferId());
             offerData.setCatId(offerDetail.getCatId());
             offerData.setCatName(offerDetail.getCatName());
