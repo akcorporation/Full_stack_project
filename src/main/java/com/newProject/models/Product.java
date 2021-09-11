@@ -68,8 +68,6 @@ public void setPrdEd(int prdEd) {
 	this.prdEd = prdEd;
 }
 
-public void setPrdEd(int prdEd) {
-	this.prdEd = prdEd;
-}
+
 
 }
