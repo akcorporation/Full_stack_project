@@ -68,10 +68,11 @@ public class ProductService {
 		}
 	}
 
+  
 	public String deleteProductById(Long prdId) {
 		Optional<Product> optional = productRepository.check(prdId);
 		if (optional.isPresent()) {
-			productRepository.deleteById(prdId);;
+			productRepository.deleteById(prdId);
 			return "Product Deleted Successfully .......";
 		} else {
 			return "No Data Found with Id : " + prdId;

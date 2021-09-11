@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "product_master")
 public class Product {
+  
 @Id
 @Column(name = "prd_id")
 private Long prdId;
@@ -67,5 +68,8 @@ public void setPrdEd(int prdEd) {
 	this.prdEd = prdEd;
 }
 
+public void setPrdEd(int prdEd) {
+	this.prdEd = prdEd;
+}
 
 }
