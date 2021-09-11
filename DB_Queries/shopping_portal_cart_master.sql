@@ -29,7 +29,7 @@ CREATE TABLE `cart_master` (
   `prd_quantity` int DEFAULT NULL,
   PRIMARY KEY (`cart_id`),
   UNIQUE KEY `cart_id_UNIQUE` (`cart_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `cart_master` (
 
 LOCK TABLES `cart_master` WRITE;
 /*!40000 ALTER TABLE `cart_master` DISABLE KEYS */;
+INSERT INTO `cart_master` VALUES (22,8,2,2),(23,8,4,5);
 /*!40000 ALTER TABLE `cart_master` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-05 16:01:11
+-- Dump completed on 2021-09-11 20:32:22

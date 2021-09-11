@@ -26,11 +26,12 @@ CREATE TABLE `billing_master` (
   `bill_id` int NOT NULL AUTO_INCREMENT,
   `user_id` int DEFAULT NULL,
   `total_amount` float DEFAULT NULL,
-  `products` tinytext,
   `bill_date` date DEFAULT NULL,
   `is_cancelled` tinyint DEFAULT NULL,
+  `product_id` int DEFAULT NULL,
+  `product_quan` int DEFAULT NULL,
   PRIMARY KEY (`bill_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +40,7 @@ CREATE TABLE `billing_master` (
 
 LOCK TABLES `billing_master` WRITE;
 /*!40000 ALTER TABLE `billing_master` DISABLE KEYS */;
+INSERT INTO `billing_master` VALUES (27,9,2250,'2021-09-11',0,4,3),(28,9,28500,'2021-09-11',0,1,2),(29,6,14250,'2021-09-11',0,1,1),(30,6,1674,'2021-09-11',0,3,3),(31,6,1500,'2021-09-11',1,4,2);
 /*!40000 ALTER TABLE `billing_master` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-10 20:19:18
+-- Dump completed on 2021-09-11 20:32:22
