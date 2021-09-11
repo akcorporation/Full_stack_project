@@ -36,7 +36,7 @@ public class ProductController {
 
 	@PostMapping("/saveProduct")
 	public ResponseEntity<String> saveProduct(@RequestParam String prdName,
-			@RequestParam String prdDesc, @RequestParam int prdRate, @RequestParam int prdAvail,
+			@RequestParam String prdDesc, @RequestParam Long prdRate, @RequestParam int prdAvail,
 			@RequestParam int prdCatId) {
 		//System.out.println(prdName + prdDesc + prdRate+ prdAvail + prdCatId);
 		String response = productService.saveProductDetails(prdName, prdDesc, prdRate, prdAvail, prdCatId);
@@ -59,7 +59,7 @@ public class ProductController {
 	}
 	
     @GetMapping("/getProductById/{prdId}")
-    public ResponseEntity<Product> getProductById(@PathVariable int prdId){
+    public ResponseEntity<Product> getProductById(@PathVariable Long prdId){
     	Product response = productService.getProductById(prdId);
     	if (response == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -69,15 +69,15 @@ public class ProductController {
     }
     
     @PostMapping("/updateProduct")
-    public ResponseEntity<String> updateProduct(@RequestParam int prdId, @RequestParam String prdName,
-			@RequestParam String prdDesc, @RequestParam int prdRate, @RequestParam int prdAvail,
+    public ResponseEntity<String> updateProduct(@RequestParam Long prdId, @RequestParam String prdName,
+			@RequestParam String prdDesc, @RequestParam Long prdRate, @RequestParam int prdAvail,
 			@RequestParam int prdCatId){
         String response = productService.updateProductDetails(prdId, prdName, prdDesc, prdRate, prdAvail, prdCatId);
         return new ResponseEntity<>(response , HttpStatus.OK);
     }
     
     @DeleteMapping("/deleteProduct/{prdId}")
-    public ResponseEntity<String> deleteProduct(@PathVariable int prdId) {
+    public ResponseEntity<String> deleteProduct(@PathVariable Long prdId) {
         String respose = productService.deleteProductById(prdId);
         return new ResponseEntity<>(respose , HttpStatus.OK);
     }

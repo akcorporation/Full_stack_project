@@ -10,13 +10,13 @@ import javax.persistence.Table;
 public class Product {
 @Id
 @Column(name = "prd_id")
-private int prdId;
+private Long prdId;
 @Column(name = "prd_name")
 private String prdName;
 @Column(name = "prd_desc")
 private String prdDesc;
 @Column(name = "prd_rate")
-private int prdRate;
+private Long prdRate;
 @Column(name = "prd_avail")
 private int prdAvail;
 @Column(name = "prd_cat_id")
@@ -24,10 +24,10 @@ private int prdCatId;
 @Column(name = "prd_ed")
 private int prdEd;
 
-public int getPrdId() {
+public Long getPrdId() {
 	return prdId;
 }
-public void setPrdId(int prdId) {
+public void setPrdId(Long prdId) {
 	this.prdId = prdId;
 }
 public String getPrdName() {
@@ -42,10 +42,10 @@ public String getPrdDesc() {
 public void setPrdDesc(String prdDesc) {
 	this.prdDesc = prdDesc;
 }
-public int getPrdRate() {
+public Long getPrdRate() {
 	return prdRate;
 }
-public void setPrdRate(int prdRate) {
+public void setPrdRate(Long prdRate) {
 	this.prdRate = prdRate;
 }
 public int getPrdAvail() {

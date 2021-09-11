@@ -1,13 +1,11 @@
 package com.newProject.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "billing_master")
@@ -20,11 +18,12 @@ public class Bill {
     private Long userId;
     @Column(name = "total_amount")
     private float billAmt;
-    @Column(name = "products")
-    private String billProduct;    
-    @Temporal(TemporalType.DATE)
+    @Column(name = "product_id")
+    private Long billProductId;
+    @Column(name = "product_quan")
+    private Long billProductQuan;
     @Column(name = "bill_date")
-    private Date billDate;
+    private LocalDate billDate;
     @Column(name = "is_cancelled")
     private boolean isCancelled;
 
@@ -53,20 +52,28 @@ public class Bill {
         this.billAmt = billAmt;
     }
 
-    // public Map<String, Integer> getBillProduct() {
-    //     return this.billProduct;
-    // }
+    public Long getBillProductId() {
+        return this.billProductId;
+    }
 
-    // public void setBillProduct(Map<String, Integer> billProduct) {
-    //     this.billProduct = billProduct;
-    // }
+    public void setBillProductId(Long billProductId) {
+        this.billProductId = billProductId;
+    }
+    
+    public Long getBillProductQuan() {
+        return this.billProductQuan;
+    }
 
-    public Date getBillDate() {
+    public void setBillProductQuan(Long billProductQuan) {
+        this.billProductQuan = billProductQuan;
+    }
+
+    public LocalDate getBillDate() {
         return this.billDate;
     }
 
-    public void setBillDate(Date billDate) {
-        this.billDate = billDate;
+    public void setBillDate(LocalDate localDate) {
+        this.billDate = localDate;
     }
 
     public boolean isIsCancelled() {
