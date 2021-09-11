@@ -2,6 +2,8 @@ package com.newProject.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,7 +14,8 @@ public class User {
 	@Column(name = "user_name")
 	private String userName;
 	
-	@Id
+	@Id	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private Long id;
 	
@@ -87,5 +90,5 @@ public class User {
 	public void setUserPass(String userPass) {
 		this.userPass = userPass;
 	}
-	
+
 }

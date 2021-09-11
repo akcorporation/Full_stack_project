@@ -2,6 +2,8 @@ package com.newProject.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,6 +12,7 @@ import javax.persistence.Table;
 public class Product {
   
 @Id
+@GeneratedValue(strategy = GenerationType.AUTO)
 @Column(name = "prd_id")
 private Long prdId;
 @Column(name = "prd_name")

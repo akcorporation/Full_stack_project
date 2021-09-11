@@ -75,21 +75,22 @@ public class BillService {
         cartRepository.deleteCartByUserId(userId);
     }
 
-    public String returnProductById(Long prdId) {
+    public String returnProductById(Long billId) {
         LocalDate curDate = LocalDate.now();
-        Optional<Bill> optional = billRepository.getByPrdId(prdId);
+        Optional<Bill> optional = billRepository.getByBillId(billId);
         if(optional.isEmpty()){
             return "Problem";
         }
         else{
             LocalDate billDate = optional.get().getBillDate();
-            if(billDate.plusDays(7).isAfter(curDate)){
+            if(billDate.plusDays(7).isBefore(curDate)){
                 return "Fail";
             }
             else{
                 Bill bill = new Bill();
                 bill = optional.get();
                 bill.setIsCancelled(true);
+                billRepository.save(bill);
                 return "Success";
             }
         }

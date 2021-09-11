@@ -46,9 +46,9 @@ public class CartService {
 		String response;
 		try {
 			cartRepository.deleteById(id);
-		    response= "User Deleted Successfully";
+		    response= "Cart Deleted Successfully";
 		}catch (Exception e) {
-			response= "User Deleted Successfully";
+			response= "Cart Deleted Successfully";
 		}
 		return response;
 	}
