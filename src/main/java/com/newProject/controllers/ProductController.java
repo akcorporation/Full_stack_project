@@ -1,7 +1,6 @@
 package com.newProject.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.newProject.models.Product;
 import com.newProject.services.ProductService;
 
@@ -35,21 +33,14 @@ public class ProductController {
 	 * @param prdCatId
 	 * @return saves the product in DB
 	 */
-	@PostMapping("/")
-	private void demo(@RequestParam int Name) {
-		System.out.println("Hello");
-		System.out.println(Name);
-
-	}
 
 	@PostMapping("/saveProduct")
 	public ResponseEntity<String> saveProduct(@RequestParam String prdName,
 			@RequestParam String prdDesc, @RequestParam int prdRate, @RequestParam int prdAvail,
 			@RequestParam int prdCatId) {
-		System.out.println(prdName + prdDesc + prdRate+ prdAvail + prdCatId);
-		//String response = productService.saveProductDetails(prdName, prdDesc, prdRate, prdAvail, prdCatId);
-		//return new ResponseEntity<>(response, HttpStatus.OK);
-		return null;
+		//System.out.println(prdName + prdDesc + prdRate+ prdAvail + prdCatId);
+		String response = productService.saveProductDetails(prdName, prdDesc, prdRate, prdAvail, prdCatId);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	/**
@@ -69,11 +60,11 @@ public class ProductController {
 	
     @GetMapping("/getProductById/{prdId}")
     public ResponseEntity<Product> getProductById(@PathVariable int prdId){
-    	Optional<Product> response = productService.getProductById(prdId);
+    	Product response = productService.getProductById(prdId);
     	if (response == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} else {
-			return new ResponseEntity<Product>(HttpStatus.OK);
+			return new ResponseEntity<>(response,HttpStatus.OK);
 		}
     }
     

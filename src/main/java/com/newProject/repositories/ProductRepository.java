@@ -25,8 +25,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 		    nativeQuery = true)
 	Optional<Product> check(int prdId);
 
-	@Query(value="DELETE from PRODUCT_MASTER p where p.prd_id= :prdId",
-		    nativeQuery = true)
-	void deleteProductById(int prdId);
+	// @Query(value="DELETE FROM PRODUCT_MASTER p WHERE p.prd_id = :prdId")
+	// void deleteProductById(@Param("prdId") int prdId);
+
+	void deleteById(int prdId);
 
 }
