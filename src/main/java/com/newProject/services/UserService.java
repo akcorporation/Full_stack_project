@@ -33,7 +33,7 @@ public class UserService {
 		
 	}
 	
-	public String updateUsers(int id, String username, String usermobile, String pass, String address, String usertype,
+	public String updateUsers(Long id, String username, String usermobile, String pass, String address, String usertype,
 			String useremail) {
 		
 		User user = new User();
@@ -54,7 +54,7 @@ public class UserService {
 		
 	}
 	
-	public User fetchId(int id){
+	public User fetchId(Long id){
 		User userRecords = userRepository.getUserById(id);
 		return userRecords;
 		
@@ -65,7 +65,7 @@ public class UserService {
 		
 	}
 	@Transactional
-	public String deleteUser(int id) {
+	public String deleteUser(Long id) {
 		String response;
 		try {
 			userRepository.deleteById(id);

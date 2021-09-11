@@ -16,7 +16,7 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 
-	public String saveProductDetails(String prdName, String prdDesc, Long prdRate, int prdAvail, int prdCatId) {
+	public String saveProductDetails(String prdName, String prdDesc, Long prdRate, int prdAvail, Long prdCatId) {
 		Product productDetail = new Product();
 		productDetail.setPrdName(prdName);
 		productDetail.setPrdDesc(prdDesc);
@@ -46,7 +46,7 @@ public class ProductService {
 	}
 
 	public String updateProductDetails(Long prdId, String prdName, String prdDesc, Long prdRate, int prdAvail,
-			int prdCatId) {
+			Long prdCatId) {
 
 		Optional<Product> optional = productRepository.findById(prdId);
 		if (optional.isPresent()) {

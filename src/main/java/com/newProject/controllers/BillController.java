@@ -1,15 +1,18 @@
 package com.newProject.controllers;
 
+import com.newProject.Dto.BillDto;
 import com.newProject.models.Bill;
 import com.newProject.services.BillService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 public class BillController {
@@ -37,7 +40,7 @@ public class BillController {
 
     }
 
-    @PutMapping("/returnItem/{id}")
+    @PostMapping("/returnItem/{id}")
     public ResponseEntity<String> returnProduct(@PathVariable Long prdId){
 
         String response = billService.returnProductById(prdId);
@@ -49,5 +52,17 @@ public class BillController {
             response = "Product Returned Request Failed .....";
             return new ResponseEntity<>(response , HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/getBill/{id}")
+    public ResponseEntity<List<BillDto>> getBillByUser(@PathVariable Long Id){
+        List<BillDto> response = billService.getBilletails(Id);
+        if(response == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        else{
+            return new ResponseEntity<>(response , HttpStatus.OK);
+        }
+        
     }
 }

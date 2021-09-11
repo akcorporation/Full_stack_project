@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.newProject.models.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Integer > {
+public interface UserRepository extends JpaRepository<User,Long> {
 	
 	
 	public static final String SELECT_FROM_USER_MASTER_O_WHERE_O_USER_ID_ID = "SELECT * FROM USER_MASTER o where o.user_id = :id";
@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User,Integer > {
 	User save(User user);
 	
 	@Query(value = SELECT_FROM_USER_MASTER_O_WHERE_O_USER_ID_ID , nativeQuery = true)
-	User getUserById(Integer id);
+	User getUserById(Long id);
 	
 	@Query(value = SELECT_FROM_USER_MASTER_O_WHERE_O_USER_EMAIL_EMAIL , nativeQuery = true)
 	User getUserByEmail(String email);

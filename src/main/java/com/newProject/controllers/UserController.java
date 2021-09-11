@@ -26,7 +26,7 @@ public class UserController {
 	}
 	
 	@GetMapping("User/id/{id}")
-	public User getUserById(@PathVariable int id){
+	public User getUserById(@PathVariable Long id){
 		
 		User user = userservice.fetchId(id);
 		return user;
@@ -40,14 +40,14 @@ public class UserController {
 	}
 	
 	@PostMapping("User/update")
-	public String updateUser(@RequestParam int id, @RequestParam String username,@RequestParam String usermobile,@RequestParam String pass,@
+	public String updateUser(@RequestParam Long id, @RequestParam String username,@RequestParam String usermobile,@RequestParam String pass,@
 			RequestParam String address,@RequestParam String usertype, @RequestParam String useremail) {
 		String response = userservice.updateUsers(id, username, usermobile, pass, address, usertype, useremail);
 		return response;
 		
 	}
 	@DeleteMapping("User/delete/{id}")
-	public String deleteUser(@PathVariable int id) {
+	public String deleteUser(@PathVariable Long id) {
 		String response = userservice.deleteUser(id);
 		return response;
 	}

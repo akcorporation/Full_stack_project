@@ -70,10 +70,4 @@ public class Offer{
         this.offerVal = offer_detail;
     }
 
-    public String getCatName() {
-        return "Electronics";
-    }
- 
-
-
 }

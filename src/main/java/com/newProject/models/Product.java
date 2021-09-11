@@ -21,7 +21,7 @@ private Long prdRate;
 @Column(name = "prd_avail")
 private int prdAvail;
 @Column(name = "prd_cat_id")
-private int prdCatId;
+private Long prdCatId;
 @Column(name = "prd_ed")
 private int prdEd;
 
@@ -55,19 +55,15 @@ public int getPrdAvail() {
 public void setPrdAvail(int prdAvail) {
 	this.prdAvail = prdAvail;
 }
-public int getPrdCatId() {
+public Long getPrdCatId() {
 	return prdCatId;
 }
-public void setPrdCatId(int prdCatId) {
+public void setPrdCatId(Long prdCatId) {
 	this.prdCatId = prdCatId;
 }
 public int getPrdEd() {
 	return prdEd;
 }
-public void setPrdEd(int prdEd) {
-	this.prdEd = prdEd;
-}
-
 public void setPrdEd(int prdEd) {
 	this.prdEd = prdEd;
 }

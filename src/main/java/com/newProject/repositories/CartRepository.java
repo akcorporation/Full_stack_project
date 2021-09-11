@@ -18,7 +18,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 	
 	public static final String SELECT_FROM_CART_MASTER_O_WHERE_O_USER_ID_ID = "SELECT * FROM CART_MASTER o where o.user_id = :id";
 
-	public static final String DELETE_FROM_CART_MASTER_O_WHERE_O_USER_ID_ID = "DELETE FROM CART_MASTER o WHERE o.user_id =:Id";
+	public static final String DELETE_FROM_CART_MASTER_O_WHERE_O_USER_ID_ID = "DELETE FROM CART_MASTER o WHERE o.user_id =:userId";
 
 	
 	@Modifying

@@ -14,7 +14,7 @@ public class User {
 	
 	@Id
 	@Column(name = "user_id")
-	private int id;
+	private Long id;
 	
 	@Column(name = "user_mobile")
 	private String userMobile;
@@ -40,11 +40,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -87,12 +87,5 @@ public class User {
 	public void setUserPass(String userPass) {
 		this.userPass = userPass;
 	}
-
-	@Override
-	public String toString() {
-		return "User [userName=" + userName + ", id=" + id + ", userMobile=" + userMobile + ", userEmail=" + userEmail
-				+ ", userAddress=" + userAddress + ", userType=" + userType + ", userPass=" + userPass + "]";
-	}
 	
-
 }

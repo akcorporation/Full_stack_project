@@ -13,10 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.newProject.Dto.BillDto;
 import com.newProject.models.Bill;
 import com.newProject.models.Cart;
-import com.newProject.models.Offer;
-import com.newProject.models.Product;
 
 @Service
 public class BillService {
@@ -47,15 +46,15 @@ public class BillService {
             for(Cart cartdetail : cartdetails){
                 Bill bill = new Bill();
                 float totalAmt = 0;
-                Optional<Product> productDetail = productRepository.findById(cartdetail.getPrdId());
-                Product product = new Product();
-                product = productDetail.get();
-                Long prdCost = product.getPrdRate();
-                Long prdCatId = (long) product.getPrdCatId();
-                Optional<Offer> offerDetail = offerRepository.getOfferDetailsByCatid(prdCatId);
-                Offer offer = new Offer();
-                offer = offerDetail.get();
-                int prdOffer = 100 - offer.getofferVal();
+                Long prdCost = productRepository.findById(cartdetail.getPrdId()).get().getPrdRate();
+                Long prdCatId = productRepository.findById(cartdetail.getPrdId()).get().getPrdCatId();
+                int prdOffer = 0;
+                if(offerRepository.getOfferDetailsByCatid(prdCatId).isEmpty()){
+                    prdOffer = 100;
+                }
+                else{
+                    prdOffer = 100 - offerRepository.getOfferDetailsByCatid(prdCatId).get().getofferVal();
+                } 
                 totalAmt = totalAmt + (cartdetail.getPrdQuantity()*prdCost*prdOffer/100);
                 bill.setUserId(userId);
                 bill.setBillAmt(totalAmt);
@@ -95,6 +94,25 @@ public class BillService {
             }
         }
         
+    }
+
+    public List<BillDto> getBilletails(Long Id) {
+        List<Bill> billDetails = billRepository.getBillByUser(Id);
+        List<BillDto> result = new ArrayList<>();
+        for (Bill billDetail : billDetails){
+            BillDto billDto = new BillDto();
+            billDto.setBillId(billDetail.getBillId());
+            billDto.setUserId(billDetail.getUserId());
+            billDto.setPrdId(billDetail.getBillProductId());
+            billDto.setProductQuan(billDetail.getBillProductQuan());
+            billDto.setBillDate(billDetail.getBillDate());
+            billDto.setProductAmt(billDetail.getBillAmt());
+            billDto.setProductName(productRepository.check(billDetail.getBillProductId()).get().getPrdName());
+            billDto.setUserName(userRepository.getUserById(billDetail.getUserId()).getUserName());
+            billDto.setIsCancelled(billDetail.isIsCancelled());
+            result.add(billDto);
+        }
+        return result;
     }
     
 }

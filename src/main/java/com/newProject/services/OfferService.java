@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import com.newProject.Dto.OfferDto;
 import com.newProject.models.Offer;
+import com.newProject.repositories.CategoryRepository;
 import com.newProject.repositories.OfferRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class OfferService {
 
     @Autowired
     OfferRepository offerRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     public String saveOfferDetails(long catId,Date offerSDate,Date offerEDate, int offerVal) {
 
@@ -42,7 +46,7 @@ public class OfferService {
             OfferDto offerData = new OfferDto();
             offerData.setOfferId(offerDetail.getOfferId());
             offerData.setCatId(offerDetail.getCatId());
-            offerData.setCatName(offerDetail.getCatName());
+            offerData.setCatName(categoryRepository.getCatById(offerDetail.getCatId()).get().getCatName());
             offerData.setOfferEDate(offerDetail.getOfferEDate());
             offerData.setOfferSDate(offerDetail.getOfferSDate());
             offerData.setOfferVal(offerDetail.getofferVal());
@@ -86,22 +90,26 @@ public class OfferService {
     }
     
     public OfferDto validateAndGetOfferByCatId(Long catId){
-        // Code to check Category Repository After getting from Abhishek
-        Optional<Offer> optional = offerRepository.getOfferDetailsByCatid(catId);
-        Offer offerDetail = new Offer();
-        OfferDto offerData = new OfferDto();
-        if(optional.isEmpty()){
-            offerData = null;
+        if(categoryRepository.getCatById(catId).isEmpty()){
+            return null;
         }
         else{
-            offerDetail = optional.get();
-            offerData.setOfferId(offerDetail.getOfferId());
-            offerData.setCatId(offerDetail.getCatId());
-            offerData.setCatName(offerDetail.getCatName());
-            offerData.setOfferEDate(offerDetail.getOfferEDate());
-            offerData.setOfferSDate(offerDetail.getOfferSDate());
-            offerData.setOfferVal(offerDetail.getofferVal());
-        }   
-        return offerData;
+            Optional<Offer> optional = offerRepository.getOfferDetailsByCatid(catId);
+            Offer offerDetail = new Offer();
+            OfferDto offerData = new OfferDto();
+            if(optional.isEmpty()){
+                offerData = null;
+            }
+            else{
+                offerDetail = optional.get();
+                offerData.setOfferId(offerDetail.getOfferId());
+                offerData.setCatId(offerDetail.getCatId());
+                offerData.setCatName(categoryRepository.getCatById(offerDetail.getCatId()).get().getCatName());
+                offerData.setOfferEDate(offerDetail.getOfferEDate());
+                offerData.setOfferSDate(offerDetail.getOfferSDate());
+                offerData.setOfferVal(offerDetail.getofferVal());
+            }   
+            return offerData;
+        }
     }
 }

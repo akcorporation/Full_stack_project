@@ -36,7 +36,7 @@ public class ProductController {
 	@PostMapping("/saveProduct")
 	public ResponseEntity<String> saveProduct(@RequestParam String prdName,
 			@RequestParam String prdDesc, @RequestParam Long prdRate, @RequestParam int prdAvail,
-			@RequestParam int prdCatId) {
+			@RequestParam Long prdCatId) {
 		//System.out.println(prdName + prdDesc + prdRate+ prdAvail + prdCatId);
 		String response = productService.saveProductDetails(prdName, prdDesc, prdRate, prdAvail, prdCatId);
 		return new ResponseEntity<>(response, HttpStatus.OK);
@@ -70,7 +70,7 @@ public class ProductController {
     @PostMapping("/updateProduct")
     public ResponseEntity<String> updateProduct(@RequestParam Long prdId, @RequestParam String prdName,
 			@RequestParam String prdDesc, @RequestParam Long prdRate, @RequestParam int prdAvail,
-			@RequestParam int prdCatId){
+			@RequestParam Long prdCatId){
         String response = productService.updateProductDetails(prdId, prdName, prdDesc, prdRate, prdAvail, prdCatId);
         return new ResponseEntity<>(response , HttpStatus.OK);
     }
