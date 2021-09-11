@@ -16,7 +16,7 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 
-	public String saveProductDetails(String prdName, String prdDesc, int prdRate, int prdAvail, int prdCatId) {
+	public String saveProductDetails(String prdName, String prdDesc, long prdRate, int prdAvail, int prdCatId) {
 		Product productDetail = new Product();
 		productDetail.setPrdName(prdName);
 		productDetail.setPrdDesc(prdDesc);
@@ -38,14 +38,14 @@ public class ProductService {
 
 	}
 
-	public Product getProductById(int prdId) {
+	public Product getProductById(long prdId) {
 		Optional<Product> productDetails = productRepository.findById(prdId);
 		Product product = new Product();
 		product = productDetails.get();
 		return product;
 	}
 
-	public String updateProductDetails(int prdId, String prdName, String prdDesc, int prdRate, int prdAvail,
+	public String updateProductDetails(long prdId, String prdName, String prdDesc, long prdRate, int prdAvail,
 			int prdCatId) {
 
 		Optional<Product> optional = productRepository.findById(prdId);
@@ -68,10 +68,11 @@ public class ProductService {
 		}
 	}
 
-	public String deleteProductById(int prdId) {
+	public String deleteProductById(long prdId) {
 		Optional<Product> optional = productRepository.check(prdId);
 		if (optional.isPresent()) {
-			productRepository.deleteById(prdId);;
+			productRepository.deleteById(prdId);
+			;
 			return "Product Deleted Successfully .......";
 		} else {
 			return "No Data Found with Id : " + prdId;

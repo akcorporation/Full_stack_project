@@ -9,8 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.newProject.models.Product;
 
+
+
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	
 	@SuppressWarnings("unchecked")
@@ -19,15 +21,12 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	@Query(value = "SELECT * FROM PRODUCT_MASTER", nativeQuery = true)
 	List<Product> getAllProducts();
 	
-	Optional<Product> findById(int prdId);
+	Optional<Product> findById(long prdId);
 
 	@Query(value = "SELECT * FROM PRODUCT_MASTER p where p.prd_id= :prdId", 
 		    nativeQuery = true)
-	Optional<Product> check(int prdId);
+	Optional<Product> check(long prdId);
 
-	// @Query(value="DELETE FROM PRODUCT_MASTER p WHERE p.prd_id = :prdId")
-	// void deleteProductById(@Param("prdId") int prdId);
-
-	void deleteById(int prdId);
+	void deleteById(long prdId);
 
 }
