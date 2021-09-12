@@ -27,13 +27,13 @@ CREATE TABLE `product_master` (
   `prd_name` varchar(45) DEFAULT NULL,
   `prd_desc` text,
   `prd_rate` int DEFAULT NULL,
-  `prd_aval` int DEFAULT NULL,
   `prd_cat_id` int DEFAULT NULL,
   `prd_ed` int DEFAULT NULL,
   `prd_img` int DEFAULT NULL,
   `prd_img_extension` varchar(10) DEFAULT NULL,
+  `prd_avail` int DEFAULT NULL,
   PRIMARY KEY (`prd_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `product_master` (
 
 LOCK TABLES `product_master` WRITE;
 /*!40000 ALTER TABLE `product_master` DISABLE KEYS */;
+INSERT INTO `product_master` VALUES (1,'Samsung Galaxy A3','Quad Core 4gb Ram',15000,11,0,NULL,NULL,25),(2,'Redmi Note 10','Dual Core 6gb Ram',12000,11,0,NULL,NULL,22),(3,'One Punch Man','Action Manga',600,12,0,NULL,NULL,17),(4,'Allen Solley T-Shirt','Cotton material',750,13,0,NULL,NULL,10);
 /*!40000 ALTER TABLE `product_master` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-05 17:46:52
+-- Dump completed on 2021-09-11 20:32:21

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
 -- Host: localhost    Database: shopping_portal
 -- ------------------------------------------------------
--- Server version	8.0.26
+-- Server version	8.0.25
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +27,7 @@ CREATE TABLE `category_master` (
   `cat_name` varchar(45) DEFAULT NULL,
   `parent_cat_id` int DEFAULT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +36,7 @@ CREATE TABLE `category_master` (
 
 LOCK TABLES `category_master` WRITE;
 /*!40000 ALTER TABLE `category_master` DISABLE KEYS */;
+INSERT INTO `category_master` VALUES (11,'Mobile',0),(12,'Book',0),(13,'Fashion',0),(14,'Electronics',1);
 /*!40000 ALTER TABLE `category_master` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-05 17:06:29
+-- Dump completed on 2021-09-11 20:32:22
