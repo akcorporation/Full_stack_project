@@ -1,5 +1,6 @@
 package com.newProject.services;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,14 +47,18 @@ public class BillService {
             for(Cart cartdetail : cartdetails){
                 Bill bill = new Bill();
                 float totalAmt = 0;
+                LocalDate now = LocalDate.now();
+                DateTimeFormatter formatters = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String text = now.format(formatters);
+                LocalDate parsedDate = LocalDate.parse(text, formatters);
                 Long prdCost = productRepository.findById(cartdetail.getPrdId()).get().getPrdRate();
                 Long prdCatId = productRepository.findById(cartdetail.getPrdId()).get().getPrdCatId();
                 int prdOffer = 0;
-                if(offerRepository.getOfferDetailsByCatid(prdCatId).isEmpty()){
+                if(offerRepository.getOfferByCatIdBtwnCurDate(parsedDate,prdCatId).isEmpty()){
                     prdOffer = 100;
                 }
                 else{
-                    prdOffer = 100 - offerRepository.getOfferDetailsByCatid(prdCatId).get().getofferVal();
+                    prdOffer = 100 - offerRepository.getOfferByCatIdBtwnCurDate(parsedDate,prdCatId).get().getofferVal();
                 } 
                 totalAmt = totalAmt + (cartdetail.getPrdQuantity()*prdCost*prdOffer/100);
                 bill.setUserId(userId);

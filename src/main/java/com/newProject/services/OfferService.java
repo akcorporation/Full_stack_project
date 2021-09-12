@@ -1,6 +1,5 @@
 package com.newProject.services;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -93,7 +92,7 @@ public class OfferService {
         if(categoryRepository.getCatById(catId).isEmpty()){
             return null;
         }
-        else{
+        else{ 
             Optional<Offer> optional = offerRepository.getOfferDetailsByCatid(catId);
             Offer offerDetail = new Offer();
             OfferDto offerData = new OfferDto();
