@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.newProject.Dto.UserDto;
 import com.newProject.models.User;
 import com.newProject.services.UserService;
 
@@ -18,36 +18,37 @@ public class UserController {
 	UserService userservice;
 	
 	@PostMapping("User/add")
-	public String addUser(@RequestParam String username,@RequestParam String usermobile,@RequestParam String pass,@
-			RequestParam String address,@RequestParam String usertype, @RequestParam String useremail) {
-		String response = userservice.addUsers(username, usermobile, pass, address, usertype, useremail);
+	public String addUser(UserDto userDetail) {
+
+		String response = userservice.addUsers(userDetail);
 		return response;
 		
 	}
 	
 	@GetMapping("User/id/{id}")
-	public User getUserById(@PathVariable Long id){
-		
-		User user = userservice.fetchId(id);
-		return user;
+	public UserDto getUserById(@PathVariable Long id){
+
+		UserDto userDetail = userservice.fetchId(id);
+		return userDetail;
 	}
 	
 	@GetMapping("User/email/{email}")
-	public User getUserByEmail(@PathVariable String email){
+	public UserDto getUserByEmail(@PathVariable String email){
 		
-		User user = userservice.fetchEmail(email);
-		return user;
+		UserDto userDetail = userservice.fetchEmail(email);
+		return userDetail;
 	}
 	
-	@PostMapping("User/update")
-	public String updateUser(@RequestParam Long id, @RequestParam String username,@RequestParam String usermobile,@RequestParam String pass,@
-			RequestParam String address,@RequestParam String usertype, @RequestParam String useremail) {
-		String response = userservice.updateUsers(id, username, usermobile, pass, address, usertype, useremail);
+	@PutMapping("User/update")
+	public String updateUser(User user) {
+
+		String response = userservice.updateUsers(user);
 		return response;
 		
 	}
 	@DeleteMapping("User/delete/{id}")
 	public String deleteUser(@PathVariable Long id) {
+		
 		String response = userservice.deleteUser(id);
 		return response;
 	}
