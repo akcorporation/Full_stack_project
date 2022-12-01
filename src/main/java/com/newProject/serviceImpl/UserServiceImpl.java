@@ -9,7 +9,10 @@ import com.newProject.models.User;
 import com.newProject.repositories.UserRepository;
 import com.newProject.services.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class UserServiceImpl  implements UserService{
 	
 	@Autowired
@@ -20,15 +23,18 @@ public class UserServiceImpl  implements UserService{
 	@Override
 	public String addUsers(UserDto userDetail) {
 
-		if(userDetail != null){
+		if(!(userDetail == null)){
 			User user = mapper.map(userDetail, User.class);
 			try{
+				log.info("Saving Data for User {}",user.getUserName());
 				userRepository.save(user); 
 				return "Data Saved Successfully";
 			} catch(Exception e) {
+				log.error("Error Occured While Saving User Data", e.getMessage());
 				return e.getMessage();
 			}
 		} 
+		log.info("User Detail is Empty Please Check ..........");
 		return "User Detail is Empty";
 	}
 	
